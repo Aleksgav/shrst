@@ -1,3 +1,3 @@
+pub mod device;
+pub mod home;
 pub mod report;
-pub mod smart_device;
-pub mod smart_home;

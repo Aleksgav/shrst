@@ -4,6 +4,6 @@ pub struct SmartDevice {
 
 impl SmartDevice {
     pub fn new(desc: String) -> SmartDevice {
-        SmartDevice { desc: desc }
+        SmartDevice { desc }
     }
 }

@@ -1,4 +1,4 @@
-use super::smart_device::*;
+use super::device::*;
 use std::collections::HashMap;
 
 pub struct Room {
@@ -22,7 +22,7 @@ impl Room {
     pub fn list_devices(&self) -> Vec<&SmartDevice> {
         let mut res = Vec::new();
 
-        for (_, device) in &self.devices {
+        for device in self.devices.values() {
             res.push(device)
         }
 
@@ -51,7 +51,7 @@ impl SmartHouse {
     pub fn list_rooms(&self) -> Vec<&Room> {
         let mut res = Vec::new();
 
-        for (_, room) in &self.rooms {
+        for room in self.rooms.values() {
             res.push(room)
         }
 

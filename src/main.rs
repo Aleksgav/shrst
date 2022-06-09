@@ -1,8 +1,8 @@
 mod smart_home;
 
+use smart_home::device::*;
+use smart_home::home::*;
 use smart_home::report::*;
-use smart_home::smart_device::*;
-use smart_home::smart_home::*;
 use std::io::{self, BufWriter};
 
 // Вопрос: Что он должен из себя представлять?
@@ -49,7 +49,7 @@ fn main() -> Result<(), io::Error> {
 
     report.print(&mut std_out)?;
 
-    println!("");
+    println!();
     println!("Now we are searching by id's:");
     let room_id = String::from("kitchen");
     let device_id = String::from("thermometer");
@@ -64,7 +64,21 @@ fn main() -> Result<(), io::Error> {
     };
     println!("result: {}", res);
 
-    println!("");
+    println!();
+
+    println!("Trying to search by wrong device id:");
+    let room_id = String::from("kitchen");
+    let device_id = String::from("wrong device");
+    println!(
+        "search by room id: {}, and device id: {}",
+        room_id, device_id
+    );
+    let device_state = report.get_state_by_id(room_id, device_id);
+    let res = match device_state {
+        Some(state) => state,
+        None => String::from("nothing found"),
+    };
+    println!("result: {}", res);
 
     Ok(())
 }
